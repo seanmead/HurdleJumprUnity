@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using System.Collections;
 
-public class PlatformerCharacter2D : MonoBehaviour 
-{
+public class PlatformerCharacter2D : MonoBehaviour {
+	public ParticleSystem thruster;
+
 	bool facingRight = true;							// For determining which way the player is currently facing.
 
 	[SerializeField] float maxSpeed = 10f;				// The fastest the player can travel in the x axis.
@@ -21,8 +23,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	Animator anim;										// Reference to the player's animator component.
 
 
-    void Awake()
-	{
+    void Awake(){
 		// Setting up references.
 		groundCheck = transform.Find("GroundCheck");
 		ceilingCheck = transform.Find("CeilingCheck");
@@ -30,8 +31,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	}
 
 
-	void FixedUpdate()
-	{
+	void FixedUpdate(){
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
 		anim.SetBool("Ground", grounded);
@@ -41,13 +41,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 	}
 
 
-	public void Move(float move, bool crouch, bool jump)
-	{
+	public void Move(float move, bool crouch, bool jump){
 
 
 		// If crouching, check to see if the character can stand up
-		if(!crouch && anim.GetBool("Crouch"))
-		{
+		if(!crouch && anim.GetBool("Crouch")){
 			// If the character has a ceiling preventing them from standing up, keep them crouching
 			if( Physics2D.OverlapCircle(ceilingCheck.position, ceilingRadius, whatIsGround))
 				crouch = true;
@@ -57,8 +55,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		anim.SetBool("Crouch", crouch);
 
 		//only control the player if grounded or airControl is turned on
-		if(grounded || airControl)
-		{
+		if(grounded || airControl){
 			// Reduce the speed if crouching by the crouchSpeed multiplier
 			move = (crouch ? move * crouchSpeed : move);
 
@@ -83,12 +80,12 @@ public class PlatformerCharacter2D : MonoBehaviour
             // Add a vertical force to the player.
             anim.SetBool("Ground", false);
             rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+			Instantiate (thruster, groundCheck.position, Quaternion.identity);
         }
 	}
 
 	
-	void Flip ()
-	{
+	void Flip (){
 		// Switch the way the player is labelled as facing.
 		facingRight = !facingRight;
 		
@@ -97,4 +94,5 @@ public class PlatformerCharacter2D : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+	
 }

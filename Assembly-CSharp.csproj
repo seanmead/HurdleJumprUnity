@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{BA495364-2E8C-A210-5E47-1B0D97952DDD}</ProjectGuid>
+	<ProjectGuid>{10906118-192C-3AE3-824C-8B982CD8B69A}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -50,6 +50,7 @@
      <Compile Include="Assets\Sample Assets\2D\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Sample Assets\2D\Scripts\Platformer2DUserControl.cs" />
      <Compile Include="Assets\Sample Assets\2D\Scripts\PlatformerCharacter2D.cs" />
+     <Compile Include="Assets\Sample Assets\2D\Scripts\PlayerCollider.cs" />
      <Compile Include="Assets\Sample Assets\2D\Scripts\Restarter.cs" />
      <Compile Include="Assets\Sample Assets\2D\Scripts\Spawner.cs" />
      <Compile Include="Assets\Sample Assets\Cameras\Scripts\AbstractTargetFollower.cs" />
@@ -261,9 +262,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{44A786FC-DBEF-D915-19EE-9F45E06EFBAD}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{5D9598B8-D3CE-E2A0-115B-9A36AA15AA1C}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
-      <Project>{8940D42E-9338-DF15-AC7F-1F2214E5FDFB}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
+      <Project>{E1CB8682-D579-AC3E-D2F2-C8104DA31659}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
